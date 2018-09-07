@@ -1,0 +1,20 @@
+<h2>Register </h2>
+
+<%= form_with url: assign_register_path do |form| %>
+<%# @courses.inspect %>
+  <p>
+     Course Name
+    <%= form.select :course, @courses, :prompt => 'Select One' %>
+  </p>
+
+  <p>
+    <%= form.submit "Register " %>
+  </p>
+  <% end %>
+
+  <br/>
+  <br/>
+
+  <% if user_signed_in? %>
+  <%= link_to "Logout", destroy_user_session_path %>
+  <% end %>

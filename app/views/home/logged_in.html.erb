@@ -1,0 +1,10 @@
+<h1> Main User Page </h1>
+
+Welcome:
+<%= current_user.username %>
+<br/>
+
+
+<%= link_to "Register", register_register_path(current_user) %>
+<br/><br/>
+<%= link_to "Logout", destroy_user_session_path %>

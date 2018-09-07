@@ -1,0 +1,15 @@
+<h1> Show User Courses </h1>
+
+<br/>
+<% @courses.each do |course| %>
+  <%= course.name %>
+<% end %>
+
+<br/>
+<br/>
+<br/>
+
+
+<% if user_signed_in? %>
+  <%= link_to "Logout", destroy_user_session_path %>
+<% end %>
