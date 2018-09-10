@@ -2,10 +2,12 @@
 
 
 <br/><br/>
+
 <% if user_signed_in? %>
-<%= link_to "Register", register_register_path(current_user) %>
+  <%= link_to "My Courses", student_path(current_user) %>
+  <%= link_to "Register", register_student_path(current_user) %>
   <%= link_to "Logout", destroy_user_session_path %>
-<br/><br/>
+  <br/><br/>
 <% else %>
   <%#= link_to "Signup", new_user_registration_path %>
   <%= link_to "Login", new_user_session_path %>

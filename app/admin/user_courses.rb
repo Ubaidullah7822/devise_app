@@ -10,8 +10,9 @@ ActiveAdmin.register UserCourse do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-#member_label: :email
-#f.input :product, :as => :select, :collection => Product.all.collect {|product| [product.name, product.id] }
+
+
+
   form do |f|
     inputs "Assign Course to Teacher" do
       input :course

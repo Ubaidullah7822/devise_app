@@ -1,0 +1,10 @@
+<h2>Register </h2>
+
+<%= form_with url: assign_student_path do |f| %>
+  <%= f.select :course, options_for_select(Course.pluck(:name)), :prompt => 'Select One' %>
+  <%= f.submit "Register" %>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= link_to "Logout", destroy_user_session_path %>
+<% end %>

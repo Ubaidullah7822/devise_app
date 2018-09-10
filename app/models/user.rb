@@ -9,9 +9,10 @@ class User < ApplicationRecord
   validates :email, presence: :true, uniqueness: { case_sensitive: false }
   validates :user_type, presence:true
 
-  scope :teacher, -> { where(:user_type => "Teacher") }
+  scope :teachers, -> { where(:user_type => "Teacher") }
+  scope :students, -> { where(:user_type => "Student") }
   # Only allow letter, number, underscore and punctuation.
-  #validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+  # validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   # def login
   #   @login || self.username || self.email
   # end
@@ -24,5 +25,5 @@ class User < ApplicationRecord
   #       where(conditions.to_hash).first
   #   end
 
-  # end
 end
+
