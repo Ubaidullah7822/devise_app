@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :register do
-    member do
+
+  resources :students do
+     member do
       get :register
       post :assign
     end
