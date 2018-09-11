@@ -11,12 +11,12 @@ ActiveAdmin.register UserCourse do
 #   permitted
 # end
 
-
-
   form do |f|
     inputs "Assign Course to Teacher" do
       input :course
-      input :user,member_label: :email, :as => :select, :collection => User.where(user_type: "Teacher") {|user| [user.email, user.id] }
+      input :user,member_label: :email,
+            :as => :select,
+            :collection => User.teachers {|user| [user.email, user.id] }
     end
   f.actions
   end

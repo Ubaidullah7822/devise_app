@@ -12,4 +12,14 @@ ActiveAdmin.register Course do
 #   permitted
 # end
 
+index download_links: [:csv]
+
+  csv force_quotes: true, col_sep: ',' do
+    column "Courses" do |c|
+      c.name
+    end
+    column ("Teachers") { |course| course.users.teachers.pluck(:name).join(", ") }
+    column ("Students") { |course| course.users.students.pluck(:name).join(", ") }
+  end
+
 end
