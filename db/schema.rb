@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_10_123128) do
+ActiveRecord::Schema.define(version: 2018_09_12_065906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 2018_09_10_123128) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
+  create_table "admin_user_tabs", force: :cascade do |t|
+    t.bigint "admin_user_id"
+    t.bigint "tab_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "access", default: "Read"
+    t.index ["admin_user_id"], name: "index_admin_user_tabs_on_admin_user_id"
+    t.index ["tab_id"], name: "index_admin_user_tabs_on_tab_id"
+  end
+
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -43,6 +53,12 @@ ActiveRecord::Schema.define(version: 2018_09_10_123128) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tabs", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,6 +90,8 @@ ActiveRecord::Schema.define(version: 2018_09_10_123128) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "admin_user_tabs", "admin_users"
+  add_foreign_key "admin_user_tabs", "tabs"
   add_foreign_key "user_courses", "courses"
   add_foreign_key "user_courses", "users"
 end

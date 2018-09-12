@@ -2,6 +2,8 @@ ActiveAdmin.register User do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
+menu if: proc { current_admin_user.show_tab?('User') }
+
   permit_params :name,:user_type, :email, :password,
                  :password_confirmation, :course_ids => []
   scope :teachers
@@ -37,4 +39,24 @@ form do |f|
     end
     f.actions
 end
+
+controller do
+    def action_methods
+      tab_name = 'User'
+      if current_admin_user.present?
+        if current_admin_user.write_allowed?(tab_name)
+          super
+        elsif current_admin_user.show_tab?(tab_name)
+          super - ['edit', 'new', 'create', 'destroy']
+        else
+          []
+        end
+      else
+        super
+      end
+    end
+  end
+
+
+
 end
