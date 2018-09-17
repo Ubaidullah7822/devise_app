@@ -18,13 +18,13 @@ This project can be used to implement Admin Panel with multiple admin users havi
 * Create a middle model between AdminUser and Tab.
 * Add a column for defining accessibility between users & tabs (allowed_actions: "Read/Write")
 
-# Associations should be as followed:
+# Associations are as followed:
 * AdminUser has many AdminUserTabs(Middle table name)
 * AdminUser has many Tabs through AdminUserTabs
 * Tab can have many AdminUserTabs
 * Tab can have many AdminUsers through AdminUserTabs
 
-# Format of Saving a Name in Tab table:
+# Format of Saving Name in Tab Model
 * Model Name: (User => "User")
 * Model Name: (Admin User => "AdminUser")
 
@@ -33,7 +33,7 @@ This project can be used to implement Admin Panel with multiple admin users havi
   # Note: 
   * Change Tab names according to your tabs considering format described above.
  
-# To understand code read:
+# To read code
 * app/model/admin_user.rb
 * app/helpers/admin_helper.rb
 
