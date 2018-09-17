@@ -1,12 +1,11 @@
+# Multi User Authorization 
+This project can be used to implement Admin Panel with multiple admin users having different levels of accessibility and authority. You can dynamically manage users access to tabs and actions e.g.(CRUD operations). 
 
 # Ruby version
 * `2.4.1`
 
 # Rails version
 * `5.1.4`
-
-# Introduction
-This project can be used to implement Admin Panel with multiple admin users having different levels of accessibility and authority. You can dynamically manage admin-users access for tabs and actions e.g. (CRUD operations). 
 
 # Pre-Requisite
 * Active Admin gem is setup
