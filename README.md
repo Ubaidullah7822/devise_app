@@ -1,4 +1,3 @@
-# Setup Project
 
 # Ruby version
 * `2.4.1`
@@ -12,9 +11,7 @@ This project can be used to implement Admin Panel with multiple admin users havi
 # Pre-Requisite
 * Active Admin gem is setup
 * Devise gem is setup
-
-# Till Now
-Now, you have active admin up & running. you can see admin_user model crated by active admin. you can have multiple models liked with active admin. now let's move to the real work. 
+* Now, you have active admin up & running. you can see admin_user model crated by active admin. you can have multiple models   linked with active admin. now let's move to the real work. 
 
 # Configuration
 * Create a model named "Tab" to store name of tabs appearing in active admin.
@@ -33,7 +30,8 @@ Now, you have active admin up & running. you can see admin_user model crated by 
 
 # Setup Project
 * Run Seed file to setup dummy data
- Note: Change Tab names according to your tabs considering format described above.
+  # Note: 
+  * Change Tab names according to your tabs considering format described above.
  
 # To understand code read:
 * app/model/admin_user.rb
