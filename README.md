@@ -1,24 +1,43 @@
-# README
+# Setup Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Ruby version
+* `2.4.1`
 
-Things you may want to cover:
+# Rails version
+* `5.1.4`
 
-* Ruby version
+# Introduction
+This project can be used to implement Admin Panel with multiple admin users having different levels of accessibility and authority. You can dynamically manage admin-users access for tabs and actions e.g. (CRUD operations). 
 
-* System dependencies
+# Pre-Requisite
+* Active Admin gem is setup
+* Devise gem is setup
 
-* Configuration
+# Till Now
+Now, you have active admin up & running. you can see admin_user model crated by active admin. you can have multiple models liked with active admin. now let's move to the real work. 
 
-* Database creation
+# Configuration
+* Create a model named "Tab" to store name of tabs appearing in active admin.
+* Create a middle model between AdminUser and Tab.
+* Add a column for defining accessibility between users & tabs (allowed_actions: "Read/Write")
 
-* Database initialization
+# Associations should be as followed:
+* AdminUser has many AdminUserTabs(Middle table name)
+* AdminUser has many Tabs through AdminUserTabs
+* Tab can have many AdminUserTabs
+* Tab can have many AdminUsers through AdminUserTabs
 
-* How to run the test suite
+# Format of Saving a Name in Tab table:
+* Model Name: (User => "User")
+* Model Name: (Admin User => "AdminUser")
 
-* Services (job queues, cache servers, search engines, etc.)
+# Setup Project
+* Run Seed file to setup dummy data
+ Note: Change Tab names according to your tabs considering format described above.
+ 
+# To understand code read:
+* app/model/admin_user.rb
+* app/helpers/admin_helper.rb
 
-* Deployment instructions
 
 * ...
