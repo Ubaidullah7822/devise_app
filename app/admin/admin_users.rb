@@ -1,6 +1,9 @@
-ActiveAdmin.register AdminUser do
-    menu if: proc { current_admin_user.show_tab?('Admin User') }
 
+ActiveAdmin.register AdminUser do
+  #extend Confirmable
+    tab_name = controller.controller_name.classify
+    menu if: proc { current_admin_user.show_tab?(tab_name) }
+    #menu parent: "Blog"
     includes :admin_user_tabs, :tabs
 
   permit_params :email, :password, :password_confirmation,
@@ -40,19 +43,9 @@ ActiveAdmin.register AdminUser do
 
 
   controller do
-    def action_methods
-      tab_name = 'Admin User'
-      if current_admin_user.present?
-        if current_admin_user.write_allowed?(tab_name)
-          super
-        elsif current_admin_user.show_tab?(tab_name)
-          super - ['edit', 'new', 'create', 'destroy']
-        else
-          []
-        end
-      else
-        super
-      end
+    include AdminHelper
+    def allowed_actions
+      action_methods
     end
   end
 

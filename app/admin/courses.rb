@@ -2,7 +2,8 @@ ActiveAdmin.register Course do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-menu if: proc { current_admin_user.show_tab?('Course') }
+  tab_name = controller.controller_name.classify
+  menu if: proc { current_admin_user.show_tab?(tab_name) }
   permit_params :name
 #
 # or
@@ -12,8 +13,15 @@ menu if: proc { current_admin_user.show_tab?('Course') }
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  sidebar :help do
+      "Need help? Email us at help@example.com"
+    end
 
-index download_links: [:csv]
+
+
+
+
+  index download_links: [:csv]
 
   csv force_quotes: true, col_sep: ',' do
     column "Courses" do |c|
@@ -25,19 +33,9 @@ index download_links: [:csv]
 
 
   controller do
-    def action_methods
-      tab_name = 'Course'
-      if current_admin_user.present?
-        if current_admin_user.write_allowed?(tab_name)
-          super
-        elsif current_admin_user.show_tab?(tab_name)
-          super - ['edit', 'new', 'create', 'destroy']
-        else
-          []
-        end
-      else
-        super
-      end
+    include AdminHelper
+    def allowed_actions
+      action_methods
     end
   end
 

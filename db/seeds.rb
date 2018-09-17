@@ -5,18 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-#User.create!(username: "admin" , user_type: "Admin", email: 'admin@example.com', password: 'password', #assword_confirmation: 'password') if Rails.env.development?
+#AdminUser.create!( email: 'admin@example.com', password: 'password', password_confirmation: 'password') if #Rails.env.development?
 
 
-Tab.where(name: "Admin User").first_or_create
-Tab.where(name: "Course").first_or_create
-Tab.where(name: "User Course").first_or_create
-Tab.where(name: "User").first_or_create
-
-AdminUserTab.where(admin_user_id: 2, tab_id: 1, access: "Read/Write").first_or_create
-AdminUserTab.where(admin_user_id: 2, tab_id: 2, access: "Read/Write").first_or_create
-AdminUserTab.where(admin_user_id: 2, tab_id: 3, access: "Read/Write").first_or_create
-AdminUserTab.where(admin_user_id: 2, tab_id: 4, access: "Read/Write").first_or_create
-
+AdminUserTab.where(admin_user_id: 7, tab_id: 13, access: "Read/Write").first_or_create
+AdminUserTab.where(admin_user_id: 7, tab_id: 14, access: "Read/Write").first_or_create
+AdminUserTab.where(admin_user_id: 7, tab_id: 15, access: "Read/Write").first_or_create
+AdminUserTab.where(admin_user_id: 7, tab_id: 16, access: "Read/Write").first_or_create
 
 
